@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Online Services - خدمات آنلاین اطلس</title>
+    <meta name="description" content="Atlas Online Services - طراحی وب‌سایت‌های حرفه‌ای و خدمات دیجیتال در افغانستان">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'persian': ['Vazirmatn', 'Tahoma', 'Arial', 'sans-serif']
+                    },
+                    colors: {
+                        'primary': '#0D47A1',
+                        'secondary': '#F5F5F5',
+                        'cta': '#2E7D32',
+                        'dark': '#1A1A1A',
+                        'light-gray': '#F5F5F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0D47A1 0%, #1565C0 50%, #1976D2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 16px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .whatsapp-float:hover {
+            text-decoration: none;
+            color: #FFF;
+            background-color: #1ebe57;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #0D47A1, #2E7D32);
+            margin: 0 auto;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/93764002319" target="_blank" class="whatsapp-float">
+        واتساپ
+    </a>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary">Atlas Online Services</div>
+                    <div class="text-sm text-gray-500 mr-3">خدمات آنلاین اطلس</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <a href="#home" class="nav-link px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all duration-300">صفحه اصلی</a>
+                        <a href="#about" class="nav-link px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all duration-300">درباره ما</a>
+                        <a href="#services" class="nav-link px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all duration-300">خدمات</a>
+                        <a href="#portfolio" class="nav-link px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all duration-300">نمونه کارها</a>
+                        <a href="#contact" class="nav-link px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all duration-300">تماس با ما</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-md transition-all duration-300">صفحه اصلی</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-md transition-all duration-300">درباره ما</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-md transition-all duration-300">خدمات</a>
+                <a href="#portfolio" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-md transition-all duration-300">نمونه کارها</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-md transition-all duration-300">تماس با ما</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white py-32 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8">
+                    Atlas Online Services
+                </h1>
+                <h2 class="text-3xl md:text-4xl mb-6 text-blue-100 font-semibold">
+                    خدمات آنلاین اطلس
+                </h2>
+                <p class="text-xl md:text-2xl mb-12 text-blue-100 leading-relaxed max-w-4xl mx-auto">
+                    طراحی وب‌سایت‌های استاتیک حرفه‌ای برای رشد کسب‌وکار شما در افغانستان
+                </p>
+                <p class="text-lg mb-12 text-blue-200 leading-relaxed max-w-3xl mx-auto">
+                    ما با استفاده از جدیدترین تکنولوژی‌های وب، وب‌سایت‌های سریع، زیبا و کاربردی برای کسب‌وکارهای افغان طراحی می‌کنیم. 
+                    از کورس‌های آموزشی گرفته تا کلینیک‌ها، رستورانت‌ها و بوتیک‌ها - ما همه نوع کسب‌وکار را پوشش می‌دهیم.
+                </p>
+                <div class="mb-12">
+                    <a href="https://wa.me/93764002319" target="_blank" class="bg-cta hover:bg-green-700 text-white px-12 py-6 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 inline-block">
+                        سفارش از طریق واتساپ
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-5xl mx-auto">
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 class="text-2xl font-bold mb-4">طراحی حرفه‌ای</h3>
+                        <p class="text-blue-100 leading-relaxed">وب‌سایت‌های مدرن و ریسپانسیو که در تمام دستگاه‌ها به خوبی نمایش داده می‌شوند</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 class="text-2xl font-bold mb-4">سرعت بالا</h3>
+                        <p class="text-blue-100 leading-relaxed">تحویل سریع پروژه‌ها با حفظ کیفیت و رعایت تمام استانداردهای وب</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 class="text-2xl font-bold mb-4">قیمت مناسب</h3>
+                        <p class="text-blue-100 leading-relaxed">بهترین قیمت در بازار افغانستان با کیفیت بین‌المللی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">درباره ما</h2>
+                <div class="section-divider mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    داستان تأسیس و رشد Atlas Online Services در افغانستان
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+                <div class="animate-fade-in">
+                    <div class="bg-primary text-white rounded-2xl p-10 shadow-lg">
+                        <h3 class="text-3xl font-bold mb-8 text-center">تاریخچه شرکت</h3>
+                        <p class="text-lg leading-relaxed mb-6">
+                            شرکت خدمات آنلاین اطلس به سرپرستی علی محمد کریمی در سال ۲۰۲۱ در کابل، افغانستان تأسیس گردید. 
+                            هدف اصلی ما ارائه خدمات طراحی وب‌سایت‌های ساده، سریع و جذاب برای کسب‌وکارهای کوچک و متوسط در سراسر افغانستان است.
+                        </p>
+                        <p class="text-lg leading-relaxed mb-6">
+                            ما با درک عمیق از نیازهای بازار محلی و استفاده از تکنولوژی‌های مدرن جهانی، 
+                            پلی میان کسب‌وکارهای سنتی افغان و دنیای دیجیتال ایجاد کرده‌ایم.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            تیم ما متشکل از طراحان و توسعه‌دهندگان مجرب است که با فهم کامل از فرهنگ و زبان محلی، 
+                            بهترین راه‌حل‌های دیجیتال را برای مشتریان خود ارائه می‌دهند.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <!-- جای عکس علی محمد کریمی -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                        <div class="text-center">
+                            <img src="https://scontent.fkbl5-1.fna.fbcdn.net/v/t39.30808-6/480914514_602384172569534_1183155524678998850_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=jT0_hVA6-6EQ7kNvwFlDBgL&_nc_oc=AdlbpHKZrGWmaqFTEP9BQVeCKVXeJOfbjXxWMjd0TEUnlhWPnYh6eYhEmlOQiDzxZWg&_nc_zt=23&_nc_ht=scontent.fkbl5-1.fna&_nc_gid=CT86Gy3CiKEN1pX-aWa97A&oh=00_AfagIIlbgfu8T7pGYPXRmEQZdJspWiiVLWZDPHCX5ZZknw&oe=68CE26F1" alt="علی محمد کریمی - مدیر Atlas Online Services" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-primary" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="w-48 h-48 rounded-full mx-auto mb-6 bg-primary flex items-center justify-center text-white text-4xl font-bold border-4 border-primary" style="display: none;">
+                                ع.م.ک
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-2">علی محمد کریمی</h4>
+                            <p class="text-primary font-semibold text-lg mb-4">مدیر و بنیان‌گذار</p>
+                            <p class="text-gray-600 leading-relaxed">
+                                فارغ‌التحصیل رشته کامپیوتر ساینس با بیش از ۵ سال تجربه در زمینه طراحی و توسعه وب. 
+                                متخصص در تکنولوژی‌های مدرن وب و علاقه‌مند به کمک به رشد کسب‌وکارهای افغان در فضای دیجیتال.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                            <div class="text-3xl font-bold text-primary mb-2">۵۰+</div>
+                            <p class="text-gray-600 font-medium">پروژه موفق</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                            <div class="text-3xl font-bold text-cta mb-2">۵+</div>
+                            <p class="text-gray-600 font-medium">سال تجربه</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                            <div class="text-3xl font-bold text-primary mb-2">۱۰۰٪</div>
+                            <p class="text-gray-600 font-medium">رضایت مشتری</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                            <div class="text-3xl font-bold text-cta mb-2">۲۴/۷</div>
+                            <p class="text-gray-600 font-medium">پشتیبانی</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-primary mb-6">ماموریت ما</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        ماموریت ما کمک به کسب‌وکارهای افغان برای ورود به دنیای دیجیتال و بهره‌مندی از مزایای حضور آنلاین است. 
+                        ما معتقدیم که هر کسب‌وکاری، صرف‌نظر از اندازه آن، حق دارد تا حضور حرفه‌ای در اینترنت داشته باشد.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        با ارائه خدمات با کیفیت و قیمت مناسب، ما تلاش می‌کنیم تا مانع قیمت و پیچیدگی فنی را از سر راه کسب‌وکارها برداریم.
+                    </p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-cta mb-6">چشم‌انداز ما</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        چشم‌انداز ما تبدیل شدن به پیشرو در ارائه خدمات طراحی وب‌سایت در افغانستان و کمک به دیجیتالی شدن اقتصاد کشور است. 
+                        ما می‌خواهیم پلی میان کسب‌وکارهای محلی و بازارهای جهانی باشیم.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        هدف ما ایجاد هزاران وب‌سایت حرفه‌ای برای کسب‌وکارهای افغان و کمک به رشد اقتصاد دیجیتال کشور است.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Values -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">ارزش‌های ما</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <h4 class="text-lg font-bold text-primary mb-3">کیفیت</h4>
+                        <p class="text-gray-600 text-sm">ما هرگز در کیفیت کار خود مصالحه نمی‌کنیم</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-lg font-bold text-cta mb-3">صداقت</h4>
+                        <p class="text-gray-600 text-sm">شفافیت کامل در قیمت‌گذاری و زمان‌بندی</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-lg font-bold text-primary mb-3">نوآوری</h4>
+                        <p class="text-gray-600 text-sm">استفاده از جدیدترین تکنولوژی‌ها</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-lg font-bold text-cta mb-3">خدمات</h4>
+                        <p class="text-gray-600 text-sm">پشتیبانی مداوم و خدمات پس از فروش</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">خدمات ما</h2>
+                <div class="section-divider mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    مجموعه کاملی از خدمات طراحی و توسعه وب برای کسب‌وکارهای افغان
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-100 hover:border-primary">
+                    <div class="bg-primary text-white rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6 text-xl font-bold">
+                        وب
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">طراحی وب‌سایت استاتیک</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        طراحی وب‌سایت‌های حرفه‌ای و مدرن برای انواع کسب‌وکارها شامل کورس‌های آموزشی، 
+                        کلینیک‌های پزشکی، رستورانت‌ها، بوتیک‌ها و شرکت‌های خدماتی.
+                    </p>
+                    
+                    <h4 class="font-bold text-gray-800 mb-3">ویژگی‌های کلیدی:</h4>
+                    <ul class="text-gray-600 text-sm space-y-2 mb-6">
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> طراحی ریسپانسیو برای موبایل و تبلت</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> بهینه‌سازی سرعت بارگذاری</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> سازگاری با تمام مرورگرها</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> طراحی مطابق با فرهنگ محلی</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> پشتیبانی از زبان‌های دری و پشتو</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> فرم‌های تماس و درخواست</li>
+                    </ul>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <h5 class="font-bold text-gray-800 mb-2">مناسب برای:</h5>
+                        <p class="text-gray-600 text-sm">کورس‌های آموزشی، کلینیک‌ها، رستورانت‌ها، بوتیک‌ها، شرکت‌های خدماتی، دفاتر وکلا، مراکز زیبایی</p>
+                    </div>
+                    
+                    <button onclick="openWhatsApp('طراحی وب‌سایت استاتیک')" class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-all duration-300">درخواست قیمت</button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-100 hover:border-cta">
+                    <div class="bg-cta text-white rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6 text-xl font-bold">
+                        صفحه
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">بروشور آنلاین و لندینگ‌پیج</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        ساخت صفحات تک‌صفحه‌ای جذاب و تأثیرگذار برای معرفی محصولات، خدمات یا رویدادهای خاص. 
+                        این صفحات برای جذب مشتری و افزایش فروش بهینه‌سازی شده‌اند.
+                    </p>
+                    
+                    <h4 class="font-bold text-gray-800 mb-3">ویژگی‌های کلیدی:</h4>
+                    <ul class="text-gray-600 text-sm space-y-2 mb-6">
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> طراحی جذاب و چشم‌نواز</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> دکمه‌های فراخوان عمل (CTA)</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> فرم‌های ثبت‌نام و تماس</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> بهینه‌سازی برای تبدیل بازدیدکننده به مشتری</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> گالری تصاویر و ویدیو</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> اتصال به شبکه‌های اجتماعی</li>
+                    </ul>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <h5 class="font-bold text-gray-800 mb-2">مناسب برای:</h5>
+                        <p class="text-gray-600 text-sm">معرفی محصولات جدید، رویدادها، کمپین‌های تبلیغاتی، ثبت‌نام کورس‌ها، معرفی خدمات ویژه</p>
+                    </div>
+                    
+                    <button onclick="openWhatsApp('بروشور آنلاین و لندینگ‌پیج')" class="w-full bg-cta hover:bg-green-700 text-white py-3 rounded-lg font-medium transition-all duration-300">درخواست قیمت</button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-100 hover:border-primary">
+                    <div class="bg-primary text-white rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6 text-xl font-bold">
+                        پشتیبانی
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">پشتیبانی و بهبود سایت</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        خدمات نگهداری، به‌روزرسانی و بهبود عملکرد وب‌سایت‌های موجود. 
+                        ما از وب‌سایت شما مراقبت کرده و آن را همیشه به‌روز و امن نگه می‌داریم.
+                    </p>
+                    
+                    <h4 class="font-bold text-gray-800 mb-3">خدمات شامل:</h4>
+                    <ul class="text-gray-600 text-sm space-y-2 mb-6">
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> رفع مشکلات فنی و خرابی‌ها</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> بهینه‌سازی سرعت و عملکرد</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> به‌روزرسانی محتوا و تصاویر</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> اضافه کردن صفحات و بخش‌های جدید</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> بک‌آپ منظم از اطلاعات</li>
+                        <li class="flex items-start"><span class="text-cta ml-2 mt-1">•</span> مشاوره برای بهبود وب‌سایت</li>
+                    </ul>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <h5 class="font-bold text-gray-800 mb-2">مزایا:</h5>
+                        <p class="text-gray-600 text-sm">وب‌سایت همیشه فعال، سریع و به‌روز - آرامش خاطر کامل برای صاحبان کسب‌وکار</p>
+                    </div>
+                    
+                    <button onclick="openWhatsApp('پشتیبانی و بهبود سایت')" class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-all duration-300">درخواست قیمت</button>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="mt-16 bg-light-gray rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">خدمات اضافی</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <h4 class="font-bold text-primary mb-2">ثبت دامنه</h4>
+                        <p class="text-gray-600 text-sm">ثبت و مدیریت نام دامنه</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-primary mb-2">هاستینگ</h4>
+                        <p class="text-gray-600 text-sm">سرویس میزبانی وب</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-primary mb-2">ایمیل کسب‌وکار</h4>
+                        <p class="text-gray-600 text-sm">ایمیل حرفه‌ای با دامنه شما</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-primary mb-2">آموزش</h4>
+                        <p class="text-gray-600 text-sm">آموزش مدیریت وب‌سایت</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">نمونه کارهای ما</h2>
+                <div class="section-divider mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    مجموعه‌ای از پروژه‌های موفق انجام شده توسط Atlas Online Services برای کسب‌وکارهای مختلف
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-primary to-blue-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">شرکت IT</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">شرکت فناوری اطلاعات</h3>
+                        <p class="text-gray-600 text-sm mb-3">وب‌سایت کامل شرکت IT با معرفی خدمات و تیم</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">ریسپانسیو</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded mr-1">مدرن</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/ITcompany/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-pink-500 to-purple-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">Afghan Botic</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">بوتیک و کفش فروشی</h3>
+                        <p class="text-gray-600 text-sm mb-3">فروشگاه آنلاین کفش و لباس با گالری محصولات</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded">فروشگاه</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-1">گالری</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/AfghanBotic/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-cta to-green-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">سیستم مدیریت</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">سیستم مدیریت آموزشی</h3>
+                        <p class="text-gray-600 text-sm mb-3">پنل مدیریت برای مراکز آموزشی و کورس‌ها</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded">مدیریت</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1">آموزشی</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/ManagmentSystem/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">NSEC</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">کورس آموزشی ستاره نیلی</h3>
+                        <p class="text-gray-600 text-sm mb-3">وب‌سایت معرفی کورس‌های آموزشی و ثبت‌نام</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">کورس</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded mr-1">آموزش</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/NSEC/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-green-500 to-teal-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">کلینیک زیتون</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">کلینیک حجامت و ماساژ</h3>
+                        <p class="text-gray-600 text-sm mb-3">وب‌سایت کلینیک با معرفی خدمات درمانی</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded">کلینیک</span>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded mr-1">درمان</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/ZaitoonClinic/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-orange-500 to-red-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">هوتل نصیب</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">هوتل و رستورانت نصیب</h3>
+                        <p class="text-gray-600 text-sm mb-3">وب‌سایت هوتل با معرفی اتاق‌ها و رستورانت</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded">هوتل</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded mr-1">رستورانت</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/NasibResturant/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 7 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-cyan-500 to-blue-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">کلینیک نور</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">کلینیک دندان نور</h3>
+                        <p class="text-gray-600 text-sm mb-3">وب‌سایت کلینیک دندانپزشکی با نوبت‌دهی</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded">دندان</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1">نوبت</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/ClinicNoor/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 8 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-purple-500 to-pink-600 h-32 flex items-center justify-center">
+                        <div class="text-white text-2xl font-bold">وبلاگ شخصی</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">وبلاگ علی محمد کریمی</h3>
+                        <p class="text-gray-600 text-sm mb-3">وبلاگ شخصی با مقالات فنی و تجربیات</p>
+                        <div class="text-xs text-gray-500 mb-4">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded">وبلاگ</span>
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded mr-1">شخصی</span>
+                        </div>
+                        <a href="https://arzdig2025.github.io/Alimohammad/" target="_blank" class="text-primary hover:text-blue-600 font-medium text-sm">مشاهده پروژه ←</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://wa.me/93764002319" target="_blank" class="bg-cta hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    سفارش پروژه جدید
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">تماس با ما</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-8"></div>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    آماده همکاری و ارائه بهترین راه‌حل‌های دیجیتال برای کسب‌وکار شما هستیم
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">اطلاعات تماس</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="bg-cta rounded-lg p-3 ml-6">
+                                <div class="text-white font-bold">واتساپ</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">تماس سریع از طریق واتساپ</h4>
+                                <p class="text-blue-100 mb-2">شماره: 0764002319</p>
+                                <a href="https://wa.me/93764002319" target="_blank" class="text-cta hover:text-green-300 font-medium">wa.me/93764002319</a>
+                                <p class="text-blue-200 text-sm mt-2">پاسخگویی ۲۴ ساعته - سریع‌ترین راه ارتباط</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-cta rounded-lg p-3 ml-6">
+                                <div class="text-white font-bold">ایمیل</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">ایمیل رسمی</h4>
+                                <p class="text-blue-100 mb-2">0764002319ali@gmail.com</p>
+                                <p class="text-blue-200 text-sm">برای ارسال فایل‌ها و مکاتبات رسمی</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-cta rounded-lg p-3 ml-6">
+                                <div class="text-white font-bold">آدرس</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">دفتر مرکزی</h4>
+                                <p class="text-blue-100 mb-2">کابل، افغانستان</p>
+                                <p class="text-blue-200 text-sm">ملاقات حضوری با هماهنگی قبلی</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-cta rounded-lg p-3 ml-6">
+                                <div class="text-white font-bold">مدیر</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">علی محمد کریمی</h4>
+                                <p class="text-blue-100 mb-2">مدیر و بنیان‌گذار</p>
+                                <p class="text-blue-200 text-sm">مشاوره مستقیم و بررسی پروژه‌ها</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-blue-800 rounded-2xl p-6">
+                        <h4 class="font-bold text-lg mb-4">ساعات کاری</h4>
+                        <div class="space-y-2 text-blue-100">
+                            <p>شنبه تا چهارشنبه: ۹:۰۰ صبح - ۶:۰۰ عصر</p>
+                            <p>پنج‌شنبه: ۹:۰۰ صبح - ۱:۰۰ ظهر</p>
+                            <p>جمعه: تعطیل</p>
+                            <p class="text-cta font-medium">پاسخگویی واتساپ: ۲۴ ساعته</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">درخواست مشاوره رایگان</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">نام و نام خانوادگی *</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white placeholder-blue-200" placeholder="نام کامل خود را وارد کنید">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">شماره تماس *</label>
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white placeholder-blue-200" placeholder="مثال: 0700123456">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نوع کسب‌وکار</label>
+                            <input type="text" id="business" class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white placeholder-blue-200" placeholder="مثال: رستورانت، کلینیک، کورس آموزشی">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نوع خدمت مورد نیاز *</label>
+                            <select id="service" required class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white">
+                                <option value="">انتخاب کنید</option>
+                                <option value="طراحی وب‌سایت استاتیک">طراحی وب‌سایت استاتیک</option>
+                                <option value="بروشور آنلاین و لندینگ‌پیج">بروشور آنلاین و لندینگ‌پیج</option>
+                                <option value="پشتیبانی و بهبود سایت">پشتیبانی و بهبود سایت</option>
+                                <option value="مشاوره">مشاوره رایگان</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">بودجه تقریبی (اختیاری)</label>
+                            <select id="budget" class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white">
+                                <option value="">انتخاب کنید</option>
+                                <option value="کمتر از ۱۰۰ دلار">کمتر از ۱۰۰ دلار</option>
+                                <option value="۱۰۰ تا ۳۰۰ دلار">۱۰۰ تا ۳۰۰ دلار</option>
+                                <option value="۳۰۰ تا ۵۰۰ دلار">۳۰۰ تا ۵۰۰ دلار</option>
+                                <option value="بیشتر از ۵۰۰ دلار">بیشتر از ۵۰۰ دلار</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">توضیحات پروژه</label>
+                            <textarea rows="4" id="message" class="w-full px-4 py-3 bg-blue-800 border border-blue-600 rounded-lg focus:outline-none focus:border-cta text-white placeholder-blue-200" placeholder="لطفاً پروژه، نیازها و انتظارات خود را به طور کامل شرح دهید..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-cta hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            ارسال درخواست از طریق واتساپ
+                        </button>
+                        
+                        <p class="text-blue-200 text-sm text-center">
+                            با کلیک روی دکمه بالا، اطلاعات شما به صورت پیام واتساپ ارسال می‌شود
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-primary mb-4">Atlas Online Services</div>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        طراحی وب‌سایت‌های ساده و سریع برای رشد کسب‌وکار شما در افغانستان
+                    </p>
+                    <p class="text-gray-500 text-sm">
+                        تأسیس ۲۰۲۱ - کابل، افغانستان
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">تماس سریع</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li>واتساپ: 0764002319</li>
+                        <li>ایمیل: 0764002319ali@gmail.com</li>
+                        <li>کابل، افغانستان</li>
+                        <li>مدیر: علی محمد کریمی</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">خدمات</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-white transition-colors">طراحی وب‌سایت</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">لندینگ‌پیج</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">پشتیبانی سایت</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition-colors">نمونه کارها</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">لینک‌های مفید</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">درباره ما</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">تماس با ما</a></li>
+                        <li><a href="https://wa.me/93764002319" target="_blank" class="hover:text-white transition-colors">مشاوره رایگان</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">درخواست قیمت</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © ۲۰۲۱ Atlas Online Services — طراحی وب‌سایت‌های ساده و سریع برای رشد کسب‌وکار شما.
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    تمام حقوق محفوظ است.
+                </p>
+                <p>طراح : علی محمد کریمی</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Navigation links smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // WhatsApp functions
+        function openWhatsApp(service) {
+            const message = `سلام! من علاقه‌مند به خدمت "${service}" هستم. لطفاً اطلاعات بیشتر و قیمت را ارسال کنید.`;
+            const url = `https://wa.me/93764002319?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const business = document.getElementById('business').value;
+            const service = document.getElementById('service').value;
+            const budget = document.getElementById('budget').value;
+            const message = document.getElementById('message').value;
+            
+            let whatsappMessage = `سلام! من ${name} هستم.\n\n`;
+            whatsappMessage += `📞 شماره تماس: ${phone}\n`;
+            if (business) whatsappMessage += `🏢 نوع کسب‌وکار: ${business}\n`;
+            whatsappMessage += `🛠 خدمت مورد نیاز: ${service}\n`;
+            if (budget) whatsappMessage += `💰 بودجه تقریبی: ${budget}\n`;
+            if (message) whatsappMessage += `📝 توضیحات: ${message}\n`;
+            whatsappMessage += `\nلطفاً با من تماس بگیرید.`;
+            
+            const url = `https://wa.me/93764002319?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(url, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f9b968755df9fa',t:'MTc1Nzk1NjA4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
